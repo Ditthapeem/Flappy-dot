@@ -7,9 +7,16 @@ CANVAS_HEIGHT = 500
 
 UPDATE_DELAY = 33
 GRAVITY = 2.5
+STARTING_VELOCITY = -30
 
 class Dot(Sprite):
-    pass
+    def init_element(self):
+        self.vy = STARTING_VELOCITY
+
+    def update(self):
+        self.y += self.vy
+        self.vy += GRAVITY
+
 
 
 class FlappyGame(GameApp):
@@ -30,10 +37,9 @@ class FlappyGame(GameApp):
     def on_key_pressed(self, event):
         pass
 
-
 if __name__ == "__main__":
     root = tk.Tk()
-    root.title("Monkey Banana Game")
+    root.title("Flappy-dot Game")
  
     # do not allow window resizing
     root.resizable(False, False)
